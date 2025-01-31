@@ -1,4 +1,5 @@
-FROM node:20-alpine
+# M1 Mac/Apple silicon
+FROM --platform=linux/arm64 node:20-alpine
 
 WORKDIR /app
 

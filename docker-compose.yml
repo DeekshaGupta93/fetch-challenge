@@ -16,3 +16,30 @@ services:
       - NODE_ENV=development
       - PORT=3000
     command: npm run dev
+  fetch-challenge-m1:
+    build:
+      context: .
+      dockerfile: Dockerfile.applesilicon
+    container_name: fetch-challenge
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./database.sqlite:/app/database.sqlite
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    command: npm run dev
+  fetch-challenge-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fetch-challenge-tests
+    volumes:
+      - ./database.sqlite:/app/database.sqlite
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm test
